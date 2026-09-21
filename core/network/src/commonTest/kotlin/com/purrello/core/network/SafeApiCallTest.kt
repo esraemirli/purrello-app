@@ -15,7 +15,6 @@ import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.collections.immutable.persistentMapOf
 import kotlinx.coroutines.test.runTest
-import kotlinx.io.IOException
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 
@@ -85,7 +84,7 @@ class SafeApiCallTest {
 
     @Test
     fun `GIVEN transport failure WHEN called THEN no connection`() = runTest {
-        val client = HttpClient(MockEngine { throw IOException("offline") })
+        val client = HttpClient(MockEngine { throw IllegalStateException("offline") })
 
         val result = safeApiCall<PingDto> { client.get("ping") }
 

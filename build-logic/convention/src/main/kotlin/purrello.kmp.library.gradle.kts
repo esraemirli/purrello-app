@@ -27,9 +27,11 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(lib("kotlinx-coroutines-core"))
+            // api: both types show up in public APIs (StateFlow on repositories, ImmutableMap/List on
+            // AppError and UI state), so consumers need them on their compile classpath.
+            api(lib("kotlinx-coroutines-core"))
+            api(lib("kotlinx-collections-immutable"))
             implementation(lib("kotlinx-serialization-json"))
-            implementation(lib("kotlinx-collections-immutable"))
         }
         commonTest.dependencies {
             implementation(lib("kotlin-test"))

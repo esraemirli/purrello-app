@@ -8,6 +8,8 @@ kotlin {
             api(projects.core.common)
             api(projects.core.designsystem)
             implementation(projects.core.model)
+            // MviViewModel extends androidx ViewModel and features subclass it → api, not implementation.
+            api(libs.lifecycle.viewmodel)
         }
     }
 }
