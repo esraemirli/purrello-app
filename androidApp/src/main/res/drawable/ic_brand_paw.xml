@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The brand mark for the system splash: the white tile with the coral paw (Splash artboard).
+  The platform masks a splash icon to a circle over the inner two thirds of the canvas, so the tile is a
+  36-radius circle and the paw is sized to stay inside it at the artboard's ratio (paw ≈ 55% of the tile).
+  The paw's geometry is PurrPaw's, in a 24 × 26 box scaled to 40 wide.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="@color/purrello_brand_mark_tile"
+        android:pathData="M18,54 a36,36 0 1,0 72,0 a36,36 0 1,0 -72,0 z" />
+    <path
+        android:fillColor="@color/purrello_brand_mark_ink"
+        android:pathData="M42.33,63.96 a11.67,10 0 1,0 23.34,0 a11.67,10 0 1,0 -23.34,0 z" />
+    <path
+        android:fillColor="@color/purrello_brand_mark_ink"
+        android:pathData="M37.19,49.01 a4.33,5.5 0 1,0 8.66,0 a4.33,5.5 0 1,0 -8.66,0 z" />
+    <path
+        android:fillColor="@color/purrello_brand_mark_ink"
+        android:pathData="M45.35,40.65 a4.33,5.5 0 1,0 8.66,0 a4.33,5.5 0 1,0 -8.66,0 z" />
+    <path
+        android:fillColor="@color/purrello_brand_mark_ink"
+        android:pathData="M53.99,40.65 a4.33,5.5 0 1,0 8.66,0 a4.33,5.5 0 1,0 -8.66,0 z" />
+    <path
+        android:fillColor="@color/purrello_brand_mark_ink"
+        android:pathData="M62.19,49.01 a4.33,5.5 0 1,0 8.66,0 a4.33,5.5 0 1,0 -8.66,0 z" />
+</vector>

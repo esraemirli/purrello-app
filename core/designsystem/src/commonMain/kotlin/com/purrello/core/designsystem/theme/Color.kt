@@ -5,86 +5,57 @@ import androidx.compose.ui.graphics.Color
 
 /**
  * Semantic color tokens, generated from `core/designsystem/tokens.json` (version 4), the in-repo copy of
- * the design system artifact's `project/tokens.json`.
+ * the design system artifact's `project/tokens.json` — which is also where each token's intended use and
+ * verified contrast ratio are written down.
  *
- * Features use these names only — never a palette step and never a raw hex (`ui-conventions.md §1`).
- * Each token's doc carries the intended use and the contrast ratio the design system verified.
+ * Features use these names only: never a palette step, never a raw hex (`ui-conventions.md §1`).
  */
 @Immutable
 data class PurrColors(
-    /** Screen background. */
     val bgPage: Color,
-    /** Cards, inputs, secondary buttons, menus, sheets. */
     val bgSurface: Color,
-    /** Disabled controls, skeletons, progress track, file-type tiles. */
     val bgSubtle: Color,
-    /** Brand hero: splash, login, onboarding, empty states. Never behind body text. */
+    /** Brand hero: splash, login, onboarding. Only the wordmark may sit on it — 2.3:1 for anything else. */
     val bgBrand: Color,
-    /** Selected chip, tonal button, active tab pill, icon circles, active drop zone. */
     val bgBrandSoft: Color,
-    /** Overlay behind bottom sheets and dialogs. */
     val scrim: Color,
 
-    /** Headings, body, input values (10.8:1 light / 16.1:1 dark). */
     val textPrimary: Color,
-    /** Supporting copy, helper text, placeholders, icons (4.6:1 / 7.2:1). */
     val textSecondary: Color,
-    /** Disabled labels only — never for readable information. */
+    /** Disabled labels only — never for information the user has to read. */
     val textDisabled: Color,
-    /** Inline links, ghost buttons, active icons (5.6:1 / 8.1:1). */
     val textLink: Color,
-    /** The PURRELLO wordmark on [bgBrand] — logotype only (2.3:1 light), never body text. */
     val textOnBrand: Color,
-    /** Text and icons on [bgBrandSoft]: selected chips, tonal buttons, active tab icon (7.4:1 / 6.8:1). */
     val textOnBrandSoft: Color,
 
-    /** Paw pattern on [bgBrand] — a lighter tone of the same coral. Decoration only. */
     val pawPrint: Color,
-    /**
-     * Warm tab-root header (AppHeader), passport card, lost-alert photo area.
-     * Dark is the same coral-dusk as the splash/login hero, so the brand color carries into the app
-     * instead of turning brown.
-     */
+    /** Warm tab-root header, passport card, lost-alert photo. Dark is the splash's coral-dusk. */
     val bgHero: Color,
-    /** Decorative paw prints inside [bgHero] headers and the passport card. */
     val heroPaw: Color,
-    /** Title and icons on [bgHero] (9.0:1 light / 5.2:1 dark). */
     val heroText1: Color,
-    /** Second line on [bgHero] (6.4:1 / 5.2:1). Hierarchy comes from size and weight, never opacity. */
+    /** Second line on [bgHero]. Hierarchy comes from size and weight, never from opacity. */
     val heroText2: Color,
 
     /** Coach mark (one-time tip) bubble. */
     val bgInverse: Color,
-    /** Text on [bgInverse] (11.3:1 / 16.1:1). */
     val textOnInverse: Color,
-    /** Action link on [bgInverse], e.g. "Anladım" (7.1:1 / 7.0:1). */
     val linkOnInverse: Color,
 
-    /** Primary button fill, selected radio/checkbox, progress fill, selected chip border. */
     val actionPrimary: Color,
-    /** Primary button pressed / hover. */
     val actionPrimaryPressed: Color,
-    /** Label and icon on [actionPrimary] (4.6:1 / 8.6:1). */
     val onActionPrimary: Color,
 
-    /** Dividers, card outlines, menu outline. Decorative only. */
     val borderSubtle: Color,
-    /** Input, dropdown, chip and secondary button borders (≥3:1). */
     val borderControl: Color,
-    /** 2px focus outline with 2px offset on every interactive element. */
+    /** 2px outline with a 2px offset, on every interactive element. */
     val focusRing: Color,
 
-    /** Done vaccinations, completed uploads, healthy status. Always with an icon, never color alone. */
+    // Status colors always travel with an icon: color alone never carries the meaning.
     val success: Color,
-    /** Success badge / banner background. */
     val successSoft: Color,
-    /** Upcoming vaccination, expiring certificate, near-full storage. */
     val warning: Color,
-    /** Warning badge / banner background. */
     val warningSoft: Color,
-    /** Overdue vaccination, field errors, failed upload, destructive actions. Always with an icon. */
     val danger: Color,
-    /** Danger badge, destructive (tonal) button, error banner background. */
     val dangerSoft: Color,
 )
 

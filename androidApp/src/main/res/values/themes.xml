@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Compose draws everything; this only sets the window before the first frame. -->
+    <!--
+      The app's only splash: the brand moment lives here, and the session gate behind it paints the same
+      bg-hero, so Compose takes over without a second splash (KAN-7).
+    -->
+    <style name="Theme.Purrello.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/purrello_splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_brand_paw</item>
+        <item name="postSplashScreenTheme">@style/Theme.Purrello</item>
+    </style>
+
+    <!-- Compose draws everything; this only sets the window after the splash. -->
     <style name="Theme.Purrello" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@color/purrello_splash_background</item>
     </style>
 </resources>

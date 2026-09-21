@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- bg-hero dark = coral-dusk -->
+    <color name="purrello_splash_background">#A85550</color>
+    <color name="purrello_brand_mark_tile">#FFFFFF</color>
+    <!-- the paw carries the panel's own coral on the white tile -->
+    <color name="purrello_brand_mark_ink">#A85550</color>
+</resources>

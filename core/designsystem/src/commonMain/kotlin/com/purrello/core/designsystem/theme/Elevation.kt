@@ -17,11 +17,8 @@ data class PurrShadow(
 
 @Immutable
 data class PurrElevation(
-    /** Resting cards (optional — prefer `borderSubtle`). */
     val sm: PurrShadow,
-    /** Dropdown menus, popovers. */
     val md: PurrShadow,
-    /** Bottom sheets (the design draws it upward). */
     val lg: PurrShadow,
 )
 

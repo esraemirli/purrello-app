@@ -5,12 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.purrello.shared.App
 import com.purrello.shared.di.handleDeepLinkPayload
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Hands the system splash over to our own SplashScreen composable, which carries the same
+        // coral and paw mark, so nothing jumps between the two (KAN-7).
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         if (savedInstanceState == null) handlePush(intent)
