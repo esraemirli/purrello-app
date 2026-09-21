@@ -6,13 +6,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.purrello.core.designsystem.component.PurrText
 import com.purrello.core.designsystem.component.PurrBottomActionBar
 import com.purrello.core.designsystem.component.PurrButton
 import com.purrello.core.designsystem.theme.PurrelloTheme
@@ -55,17 +55,17 @@ fun LoginScreen(
             verticalArrangement = Arrangement.spacedBy(spacing.md, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(
+            PurrText(
                 text = stringResource(CoreRes.string.common_brand_wordmark),
                 style = PurrelloTheme.typography.wordmark,
                 color = PurrelloTheme.colors.actionPrimary,
             )
-            Text(
+            PurrText(
                 text = stringResource(Res.string.auth_login_title),
                 style = PurrelloTheme.typography.display,
                 color = PurrelloTheme.colors.textPrimary,
             )
-            Text(
+            PurrText(
                 text = stringResource(Res.string.auth_login_subtitle),
                 style = PurrelloTheme.typography.bodyLg,
                 color = PurrelloTheme.colors.heroText2,

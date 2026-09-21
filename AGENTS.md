@@ -28,8 +28,11 @@ This repository is **client only**: one **Kotlin Multiplatform** codebase for **
 2. Check the design: `docs/product/design-system.md` and `docs/product/app-navigation.md` (they link to the live design artifacts).
 3. Find the closest existing screen/module and match its structure — don't rely on memory.
 4. New screen → **contract first** (`/define-api-contract`), then `/create-screen`.
-5. Every user-visible string goes to string resources (`localization.md`). Run `scripts/check-hardcoded-strings.sh` before committing.
-6. If a product or design decision is missing, **ask** — don't invent product behavior or backend fields silently.
+5. Every user-visible string goes to string resources (`localization.md`).
+6. Before pushing, run what CI runs: `scripts/check-secrets.sh`, `scripts/check-hardcoded-strings.sh`,
+   `scripts/check-architecture.sh`, `./gradlew :androidApp:assembleDebug allTests`. PR/branch/CI conventions
+   are in `git-conventions.md`; one-time GitHub & Jira setup is in `docs/github-setup.md`.
+7. If a product or design decision is missing, **ask** — don't invent product behavior or backend fields silently.
 
 ## Rule index (`.agents/rules/`)
 

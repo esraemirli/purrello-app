@@ -3,11 +3,10 @@ package com.purrello.core.ui.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.purrello.core.designsystem.component.PurrAppHeader
+import com.purrello.core.designsystem.component.PurrIconButton
 import com.purrello.core.designsystem.component.PurrEmptyState
 import com.purrello.core.designsystem.icon.PurrIcons
 import com.purrello.core.designsystem.theme.PurrelloTheme
@@ -39,13 +38,11 @@ fun TabRootScaffold(
             addContentDescription = stringResource(Res.string.a11y_add),
             trailing = {
                 // TODO(ds): owner avatar (PurrAvatar) instead of the generic icon.
-                IconButton(onClick = onOpenProfile) {
-                    Icon(
-                        imageVector = PurrIcons.Pet,
-                        contentDescription = stringResource(Res.string.a11y_open_profile),
-                        tint = PurrelloTheme.colors.textPrimary,
-                    )
-                }
+                PurrIconButton(
+                    icon = PurrIcons.Pet,
+                    contentDescription = stringResource(Res.string.a11y_open_profile),
+                    onClick = onOpenProfile,
+                )
             },
         )
         content()

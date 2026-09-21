@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Static checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0          # git grep / git ls-files based checks need the work tree
+
+      - name: No committed secrets
+        run: scripts/check-secrets.sh
+
+      - name: No hardcoded user-visible strings
+        run: scripts/check-hardcoded-strings.sh
+
+      - name: Architecture guards
+        run: scripts/check-architecture.sh
+
+  build:
+    name: Build & test (Android + common)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Android debug
+        run: ./gradlew --no-daemon :androidApp:assembleDebug
+
+      # Apple targets are disabled on a Linux host, so this runs the Android/common test suites.
+      # iOS tests need a macOS runner — see docs/github-setup.md before enabling them.
+      - name: Unit tests
+        run: ./gradlew --no-daemon allTests
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: '**/build/reports/tests/**'
+          retention-days: 7
