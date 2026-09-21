@@ -37,21 +37,41 @@ A GitHub-side bot (`anthropics/claude-code-action`) would review every PR automa
 **Anthropic API usage separately from any Claude subscription**, so it is deliberately not set up. Don't add
 it without an explicit cost decision (see "Anything that costs money" in `AGENTS.md`).
 
-## 4. Jira
+## 4. Jira ↔ GitHub
 
-- Site: `esraemirli97.atlassian.net` · project **Purrello**, key **`KAN`** (team-managed).
-  Workflow statuses: To Do → In Progress → In Review → Done (no Test column).
-- Branch and PR title carry the key (`feature/KAN-12-vaccine-list`, `feat(health): KAN-12 …`).
-- **Automatic transitions**: install the *GitHub for Jira* app and connect the repo. Then, in Jira
-  (Project settings → Automation), add:
-  - Branch created for `KAN-x` → transition to **In Progress**
-  - PR created → transition to **In Review**
-  - PR merged to `main` → transition to **Done**
+Site `esraemirli97.atlassian.net`, project **Purrello** (`KAN`), statuses To Do → In Progress → In Review → Done.
+Client tickets are created with **Team = Mobile**.
 
-  On the Free plan the whole site shares **150 automation steps per month** (every trigger, condition and
-  action counts as a step), so keep it to these three small rules — or do the transitions from Claude instead.
-- Claude (this session) can create tickets and move them through the workflow directly once the
-  **Atlassian MCP** connector is connected in claude.ai → Connectors.
+Everything below is **free on both sides** (the Atlassian "GitHub for Jira" app is listed as Free on the
+GitHub Marketplace and on the Atlassian Marketplace).
+
+### 4.1 Link the repo (free, ~5 minutes)
+
+Jira → Apps → *GitHub for Jira* → Connect GitHub organization → pick `esraemirli/purrello-app`.
+From then on, anything whose **branch name, commit message or PR title contains `KAN-4`** shows up in that
+issue's **Development** panel: branch, commits, PR with its status and link. This alone covers "Jira'da PR linki
+olsun" and costs nothing — no automation runs, no API calls.
+
+Our branch/PR conventions already carry the key (`feature/KAN-12-…`, `feat(health): KAN-12 …`), so linking is automatic.
+
+### 4.2 Status transitions — two free options
+
+**a) Smart commits** (no automation quota at all). The commit message carries the command:
+`KAN-12 #in-progress`, `KAN-12 #done`. Requires the GitHub and Jira accounts to share the same email and
+"Keep my email addresses private" to be off in GitHub. Note this fights our one-line commit rule a bit — the
+command sits in the subject line.
+
+**b) Jira automation rules** (Free plan: **100 rule runs per month, single-project rules only** — ours are
+single-project, so they are allowed). Project settings → Automation:
+
+| Trigger | Action |
+|---|---|
+| Branch created (`KAN-*`) | Transition to **In Progress** |
+| Pull request created | Transition to **In Review** |
+| Pull request merged | Transition to **Done** |
+
+That is 3 runs per ticket → roughly **33 tickets/month** inside the free quota; when it runs out, rules pause
+until the next cycle. Claude can also do the transitions through the Atlassian connector, which costs nothing.
 
 ## 5. Free-plan limits worth knowing
 
@@ -62,7 +82,8 @@ it without an explicit cost decision (see "Anything that costs money" in `AGENTS
 | Auto-delete merged branches, squash-only, auto-merge | Free, any repo | Settings → General |
 | ~~Claude PR review bot~~ | Would bill **Anthropic API usage separately** | Not set up on purpose — use `/review-pr` locally instead |
 | Jira | 10 users, 2 GB storage, 1 site | |
-| Jira Automation | **150 steps/month for the whole site** | Every trigger/condition/action = 1 step |
+| Jira Automation | **100 rule runs/month, single-project rules only** | 3 rules per ticket ≈ 33 tickets/month. (Atlassian is moving to a per-step model — recheck before relying on it) |
+| GitHub ↔ Jira app | Free | Dev panel links + smart commits |
 
 ## 6. Not enabled yet (deliberately)
 
