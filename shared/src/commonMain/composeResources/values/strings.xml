@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_tab_home">Ana sayfa</string>
+    <string name="main_tab_health">Sağlık</string>
+    <string name="main_tab_documents">Belgeler</string>
+    <string name="main_tab_care">Bakım</string>
+    <!-- Shown until a pet is selected; otherwise the tab label is the pet's name. -->
+    <string name="main_tab_pet_fallback">Pet</string>
+</resources>

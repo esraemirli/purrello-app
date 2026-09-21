@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="health_tab_title">Sağlık</string>
+    <string name="health_tab_subtitle">Aşı ve sağlık takibi</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="documents_tab_title">Belgeler</string>
+    <string name="documents_tab_subtitle">Sağlık belgeleri ve pasaport</string>
+</resources>

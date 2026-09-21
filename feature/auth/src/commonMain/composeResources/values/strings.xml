@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_login_title">Hoş geldin</string>
+    <string name="auth_login_subtitle">Dostunun sağlığı, aşıları ve belgeleri tek yerde.</string>
+    <string name="auth_login_cta_google">Google ile devam et</string>
+    <string name="auth_error_account_disabled">Hesabın şu an kullanılamıyor. Destek ekibimizle iletişime geç.</string>
+</resources>

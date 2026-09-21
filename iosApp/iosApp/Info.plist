@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<!-- Keep in sync with composeResources/values-* folders (localization.md §6). -->
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>tr</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>tr</string>
+</dict>
+</plist>

@@ -1,0 +1,8 @@
+TEAM_ID=SHY99Q5636
+
+PRODUCT_NAME=Purrello
+// TODO(release): confirm the final bundle id (must match GoogleService-Info.plist once Firebase/FCM is added).
+PRODUCT_BUNDLE_IDENTIFIER=com.purrello.app
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=0.1.0
