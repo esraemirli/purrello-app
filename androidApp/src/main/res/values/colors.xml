@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The colors the system splash needs before Compose starts. Mirrors the Splash artboard. -->
+<resources>
+    <!-- bg-hero: the splash panel -->
+    <color name="purrello_splash_background">#FCDFDC</color>
+    <!-- the brand mark's tile -->
+    <color name="purrello_brand_mark_tile">#FFFFFF</color>
+    <!-- action-primary: the paw on the tile -->
+    <color name="purrello_brand_mark_ink">#C94A43</color>
+</resources>

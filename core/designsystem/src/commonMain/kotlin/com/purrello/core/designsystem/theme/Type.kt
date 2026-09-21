@@ -21,31 +21,18 @@ import org.jetbrains.compose.resources.Font
  */
 @Immutable
 data class PurrTypography(
-    /** Logotype on bg-brand only. Uppercase, Light 300, tracking 0.3em. */
     val wordmark: TextStyle,
-    /** One per screen: onboarding/login greeting, big empty states. */
     val display: TextStyle,
-    /** Screen title (large app bar). */
     val title1: TextStyle,
-    /** Section headers inside a screen, bottom sheet titles. */
     val title2: TextStyle,
-    /** Card titles, list item primary line, dialog titles. */
     val title3: TextStyle,
-    /** Default reading text, input values (16px stops iOS zoom). */
     val bodyLg: TextStyle,
-    /** Dense lists, card descriptions, menu items. */
     val body: TextStyle,
-    /** Secondary lines in list items, metadata. */
     val bodySm: TextStyle,
-    /** Buttons lg/md. Sentence case, never uppercase. */
     val button: TextStyle,
-    /** Form field labels, chip text, tabs, small buttons. */
     val label: TextStyle,
-    /** Helper/error text, timestamps, file meta. Minimum size for readable text. */
     val caption: TextStyle,
-    /** Bottom tab bar labels and badge counts only. */
     val micro: TextStyle,
-    /** Weight, key stats, expense totals. Turkish formatting: 12.400,50 ₺. */
     val amount: TextStyle,
 )
 

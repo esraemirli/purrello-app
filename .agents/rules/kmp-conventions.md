@@ -161,7 +161,29 @@ fun MainViewController(): UIViewController = ComposeUIViewController { App() }
 - CPU-heavy work (image downscale, PDF assembly) uses `dispatchers.default` from the injected `DispatcherProvider`.
 - Routes collect `StateFlow` with **`collectAsStateWithLifecycle()`** (`lifecycle-runtime-compose`, multiplatform) so collection pauses while the app is in the background on both platforms. Stateless Screens never collect anything — they receive `state`.
 
-## 11. Library checklist
+## 11. Comments and KDoc
+
+**Write a comment only where the code cannot explain itself.** A comment that repeats the name is noise: it
+ages badly, it hides the ones that matter, and it makes a diff longer than the change.
+
+No KDoc on:
+
+- every field of a UI state, DTO, token or enum — `val showProgress: Boolean`, `SUCCESS`, `space4`, `title1`
+  say what they are;
+- a function whose name and signature already say it (`fun onEvent(event: LoginEvent)`, `PurrButton(text, onClick)`);
+- a `// region`-style header over an obvious block, or a line that narrates the next statement.
+
+Worth writing:
+
+- **why**, when the reason is outside the file: a threshold from the design, a workaround for a platform bug,
+  an order that looks arbitrary but isn't, a value copied from a contract or artboard;
+- the rule a type enforces, once, on the type — not on each of its members (`MviViewModel`, `Async`);
+- a non-obvious unit, range or ownership ("caller owns the copy", "fractions of the 390 × 844 frame");
+- a `TODO(scope):` with the ticket or condition that clears it.
+
+If a comment is needed to explain *what* the code does, rename the thing instead.
+
+## 12. Library checklist
 
 Pin exact versions when the Gradle project is created; update deliberately.
 

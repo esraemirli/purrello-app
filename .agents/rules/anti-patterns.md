@@ -43,6 +43,10 @@ Extract the shared lower-level API/DAO/cache and inject that into both, or orche
 ### Don't make feature modules depend on each other
 `feature:health` must not import from `feature:pet`. Shared models → `core:model`; shared routes → `core:navigation`; shared UI → `core:ui` / `core:designsystem`.
 
+### Don't document what the name already says
+A KDoc on every state field, enum entry or token is noise that hides the comments that matter
+(`kmp-conventions.md §11`). Comment the *why*, not the *what*.
+
 ### Don't create a domain layer for its own sake
 No pass-through use cases (`GetPetUseCase` that only calls `repository.getPet`). Add one when it combines, is reused, or holds a client rule (`architecture.md §6`).
 
