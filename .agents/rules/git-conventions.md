@@ -2,22 +2,30 @@
 
 ## Branch Naming
 
-| Prefix | Format |
+`<prefix>/<KAN-key>-<description>`
+
+| Prefix | Example |
 |---|---|
-| `epic/` | `epic/description` |
-| `feature/` | `feature/description` |
-| `bugfix/` | `bugfix/description` |
-| `crash/` | `crash/description` |
-| `techdebt/` | `techdebt/description` |
-| `modularization/` | `modularization/description` |
-| `devops/` | `devops/description` |
-| `release/` | `release/vx.x.x` |
+| `epic/` | `epic/KAN-30-health-module` |
+| `feature/` | `feature/KAN-12-vaccine-list` |
+| `bugfix/` | `bugfix/KAN-87-pet-switch-stale-data` |
+| `crash/` | `crash/KAN-91-passport-npe` |
+| `techdebt/` | `techdebt/KAN-40-async-migration` |
+| `modularization/` | `modularization/KAN-55-split-health` |
+| `devops/` | `devops/KAN-4-project-foundation` |
+| `release/` | `release/v1.2.0` (no key) |
 
-Description must be **lowercase**, words separated by `-`.
+Description is **lowercase**, words separated by `-`.
 
-Branches that implement a Jira ticket carry its key right after the prefix:
-`feature/KAN-12-vaccine-list`, `bugfix/KAN-87-pet-switch-stale-data`. No ticket (tooling, docs, small
-chores) → just the description: `devops/project-foundation`.
+**The Jira key is mandatory for any work that has a ticket** — and client work always has one. The
+GitHub ↔ Jira link is a plain string match: the key in the branch name, commit body or PR title is what puts the
+branch, commits and PR into the ticket's Development panel and what lets automation move the ticket to
+In Progress / In Review / Done. **No key → no link, no transition, and the ticket looks untouched.**
+
+Keyless branches are only for work with no ticket at all: `release/v1.2.0`, a throwaway spike.
+(`devops/project-foundation` predates this rule — don't copy it.)
+
+Start the work by creating the ticket (project `KAN`, **Team = Mobile**), then name the branch after it.
 
 ## Commit Messages
 
