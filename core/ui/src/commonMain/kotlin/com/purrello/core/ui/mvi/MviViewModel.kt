@@ -44,8 +44,9 @@ abstract class MviViewModel<State, Event, Effect>(initialState: State) : ViewMod
         _state.update(reducer)
     }
 
+    /** Suspends rather than dropping if the buffer is ever full — an unsent effect is a stuck screen. */
     protected fun sendEffect(effect: Effect) {
-        _effects.trySend(effect)
+        viewModelScope.launch { _effects.send(effect) }
     }
 
     /** `viewModelScope.launch` — cancelled when the screen's back-stack entry is popped. */

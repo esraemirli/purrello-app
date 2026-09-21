@@ -15,6 +15,15 @@ local.properties
 *.aab
 keystore.properties
 *.jks
+*.keystore
+
+# Credentials / service config — never commit, they belong in a secret store
+google-services.json
+GoogleService-Info.plist
+*.p8
+*.p12
+*.mobileprovision
+.env
 
 # iOS / Xcode
 iosApp/**/xcuserdata/

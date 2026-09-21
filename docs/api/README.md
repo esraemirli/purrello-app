@@ -3,6 +3,7 @@
 Client-designed contracts for the Go backend. Rules: `.agents/rules/api-contract.md`. New contract: copy `_template.md`, or run `/define-api-contract {Screen}`.
 
 **Status flow:** Draft (client) → Agreed (client + backend) → Live (backend shipped, client verified against it).
+Going Live also deletes that feature's `Fake…Api` and its `useFakeApi` branch (`api-contract.md §9`).
 
 ## Index
 

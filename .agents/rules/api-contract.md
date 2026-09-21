@@ -161,5 +161,9 @@ Note what is **not** there: section titles, "Yaş" labels, badge text, colors �
 - DTOs mirror the doc exactly (`@Serializable`, property names = JSON keys unless the project settles on `@SerialName` + snake_case). DTO enums have `@SerialName` per entry + `UNKNOWN`.
 - One `XApi` interface per feature with `KtorXApi` and `FakeXApi`. Every call goes through `safeApiCall { }` and returns `AppResult<Dto>`.
 - `FakeXApi` returns the contract example JSON (parsed with the same `Json`), adds a small delay, and can be switched to failure modes for manual testing.
+- **A fake lives only as long as its contract is not Live.** Fakes sit in `commonMain` (the DI module picks them
+  when `AppConfig.useFakeApi` is true), so they ship in the release binary as dead weight. When a contract
+  reaches **Live**, the same PR that flips it deletes that feature's fake API and its `useFakeApi` branch;
+  the contract example JSON stays in `commonTest` fixtures. When every contract is Live, `useFakeApi` itself goes.
 - Tests decode the contract example JSON (`testing.md`) — if the doc changes and the DTO doesn't, a test fails.
 - When the real backend deviates from an **Agreed** contract, don't silently adapt the client: raise it, then update the doc first.
