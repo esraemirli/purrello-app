@@ -1,12 +1,12 @@
 # UI Conventions
 
-Compose Multiplatform UI over ViewModels (`architecture.md`). Visual decisions come from the Purrello design system — `docs/product/design-system.md` (tokens, components, live DS artifact) and `docs/product/app-navigation.md` (headers, tab bar, flows).
+Compose Multiplatform UI over ViewModels (`architecture.md`). Visual decisions come from the Purrello design system. The **source of truth for values** is `core/designsystem/tokens.json` — a verbatim copy of the design system artifact's `project/tokens.json` (currently version 4), mirrored in Kotlin under `core:designsystem/theme`. When the design system ships a new version, update that file first, then the Kotlin tokens; `docs/product/design-system.md` is the narrative summary and `docs/product/app-navigation.md` covers headers, tab bar and flows.
 
 ## 1. Design system (`core:designsystem`)
 
 - Theme: `PurrelloTheme { }` provides `PurrelloTheme.colors`, `.typography`, `.spacing`, `.shapes`, `.sizes`. Light **and** dark are both required; dark uses warm neutrals.
 - Components are prefixed **`Purr`** and are the only building blocks features use. **Never use Material 3 components directly in features** — M3 may only be used inside DS implementations.
-- **No raw values in features:** no hex colors, no `dp`/`sp` literals for spacing/sizes/type, no `RoundedCornerShape(12.dp)`. Use tokens (`spacing.screenEdge` = 24, 4 px grid; `shapes.card` = 16; `sizes.button` = 52, `sizes.minTouch` = 44, `sizes.chip` = 36). Missing token → add it to the DS, don't inline it.
+- **No raw values in features:** no hex colors, no `dp`/`sp` literals for spacing/sizes/type, no `RoundedCornerShape(12.dp)`. Use tokens (`spacing.space1…space12` on a 4 px grid + `spacing.screenEdge`; `shapes.sm/input/card/sheet/pill`; `sizes.controlLg` = 52, `sizes.controlMd` = `sizes.minTouch` = 44, `sizes.controlSm` = 36, `sizes.iconMd/iconSm`; `colors.*`, `elevation.sm/md/lg`, `opacity.disabled`). The names come from the design system's `tokens.json`; a token that is missing there is a DS decision, not an inline value.
 - Typography: Poppins scale (`wordmark`, `display`, `title1…3`, `bodyLg`, `body`, `bodySm`, `button`, `label`, `caption`, `micro`, `amount`).
 
 | Group | Components |

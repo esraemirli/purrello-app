@@ -18,8 +18,8 @@ import com.purrello.core.designsystem.theme.PurrelloTheme
 private fun PurrButtonPreview() {
     PurrelloTheme {
         Column(
-            modifier = Modifier.padding(PurrelloTheme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.sm),
+            modifier = Modifier.padding(PurrelloTheme.spacing.space4),
+            verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.space2),
         ) {
             PurrButton(text = "Kaydet", onClick = {})
             PurrButton(text = "Vazgeç", onClick = {}, style = PurrButtonStyle.SECONDARY)

@@ -30,13 +30,13 @@ fun PurrButton(
 ) {
     val colors = PurrelloTheme.colors
     val shape = PurrelloTheme.shapes.pill
-    val height = PurrelloTheme.sizes.button
+    val height = PurrelloTheme.sizes.controlLg
     val sized = modifier.defaultMinSize(minHeight = height)
-    val padding = PaddingValues(horizontal = PurrelloTheme.spacing.xl)
+    val padding = PaddingValues(horizontal = PurrelloTheme.spacing.space6)
     val content: @Composable () -> Unit = {
         Box(contentAlignment = Alignment.Center) {
             if (loading) {
-                CircularProgressIndicator(modifier = Modifier.size(PurrelloTheme.sizes.icon), strokeWidth = 2.dp)
+                CircularProgressIndicator(modifier = Modifier.size(PurrelloTheme.sizes.iconMd), strokeWidth = 2.dp)
             } else {
                 Text(text = text, style = PurrelloTheme.typography.button)
             }

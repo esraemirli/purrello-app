@@ -46,14 +46,14 @@ fun PurrAppHeader(
             .fillMaxWidth()
             .background(colors.bgHero, PurrelloTheme.shapes.heroHeader)
             .windowInsetsPadding(WindowInsets.statusBars)
-            .padding(horizontal = spacing.screenEdge, vertical = spacing.lg),
+            .padding(horizontal = spacing.screenEdge, vertical = spacing.space4),
     ) {
         if (trailing != null) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) { trailing() }
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = title, style = PurrelloTheme.typography.title1, color = colors.textPrimary)
+                Text(text = title, style = PurrelloTheme.typography.title1, color = colors.heroText1)
                 if (subtitle != null) {
                     Text(text = subtitle, style = PurrelloTheme.typography.bodySm, color = colors.heroText2)
                 }
@@ -115,7 +115,7 @@ private fun BarRow(modifier: Modifier, content: @Composable androidx.compose.fou
             .fillMaxWidth()
             .windowInsetsPadding(WindowInsets.statusBars)
             .height(PurrelloTheme.sizes.compactHeader)
-            .padding(horizontal = PurrelloTheme.spacing.xs),
+            .padding(horizontal = PurrelloTheme.spacing.space1),
         verticalAlignment = Alignment.CenterVertically,
         content = content,
     )

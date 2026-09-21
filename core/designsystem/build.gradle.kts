@@ -11,3 +11,8 @@ kotlin {
         }
     }
 }
+
+// Poppins is bundled here (font/*.ttf, SIL OFL). The generated Res class stays internal to the DS.
+compose.resources {
+    publicResClass = false
+}

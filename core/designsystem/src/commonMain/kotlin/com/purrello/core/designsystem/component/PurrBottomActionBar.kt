@@ -22,12 +22,12 @@ fun PurrBottomActionBar(
 ) {
     Surface(color = PurrelloTheme.colors.bgSurface, modifier = modifier.fillMaxWidth()) {
         Column {
-            HorizontalDivider(color = PurrelloTheme.colors.border)
+            HorizontalDivider(color = PurrelloTheme.colors.borderSubtle)
             Column(
                 modifier = Modifier
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .padding(horizontal = PurrelloTheme.spacing.screenEdge, vertical = PurrelloTheme.spacing.md),
-                verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.sm),
+                    .padding(horizontal = PurrelloTheme.spacing.screenEdge, vertical = PurrelloTheme.spacing.space3),
+                verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.space2),
                 content = content,
             )
         }

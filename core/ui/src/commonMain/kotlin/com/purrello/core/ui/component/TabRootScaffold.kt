@@ -42,6 +42,7 @@ fun TabRootScaffold(
                     icon = PurrIcons.Pet,
                     contentDescription = stringResource(Res.string.a11y_open_profile),
                     onClick = onOpenProfile,
+                    tint = PurrelloTheme.colors.heroText1,
                 )
             },
         )
