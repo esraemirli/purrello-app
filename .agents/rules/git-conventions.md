@@ -16,7 +16,7 @@
 Description must be **lowercase**, words separated by `-`.
 
 Branches that implement a Jira ticket carry its key right after the prefix:
-`feature/PURR-12-vaccine-list`, `bugfix/PURR-87-pet-switch-stale-data`. No ticket (tooling, docs, small
+`feature/KAN-12-vaccine-list`, `bugfix/KAN-87-pet-switch-stale-data`. No ticket (tooling, docs, small
 chores) → just the description: `devops/project-foundation`.
 
 ## Commit Messages
@@ -59,7 +59,7 @@ build: scaffold KMP project with core/feature modules
 
 - One PR = one ticket = one reviewable change. Open it as a draft while CI is still red.
 - **Title** follows the commit rule (`<type>: <one sentence>`) and starts with the ticket key when there is one:
-  `feat(health): PURR-12 aşı listesi ekranı`.
+  `feat(health): KAN-12 aşı listesi ekranı`.
 - **Description** is where context lives (the commit message stays bare): what and why, the Jira link, the API
   contract doc the screen uses, screenshots / screen recording for UI changes (light + dark), and what you want
   the reviewer to look at by hand.

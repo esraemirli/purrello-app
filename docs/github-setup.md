@@ -38,17 +38,32 @@ It reads `AGENTS.md` + `.agents/rules/` at review time, so rule changes take eff
 
 ## 4. Jira
 
-- Project key placeholder in the rules is **`PURR`** — replace it everywhere once the real key exists.
-- Branch and PR title carry the key (`feature/PURR-12-vaccine-list`, `feat(health): PURR-12 …`).
+- Site: `esraemirli97.atlassian.net` · project **Purrello**, key **`KAN`** (team-managed).
+  Workflow statuses: To Do → In Progress → In Review → Done (no Test column).
+- Branch and PR title carry the key (`feature/KAN-12-vaccine-list`, `feat(health): KAN-12 …`).
 - **Automatic transitions**: install the *GitHub for Jira* app and connect the repo. Then, in Jira
   (Project settings → Automation), add:
-  - PR created for `PURR-x` → transition to **In Review**
-  - PR merged to `main` → transition to **Test** (or Done if there is no test column)
-  - Branch created from `PURR-x` → transition to **In Progress**
+  - Branch created for `KAN-x` → transition to **In Progress**
+  - PR created → transition to **In Review**
+  - PR merged to `main` → transition to **Done**
+
+  On the Free plan the whole site shares **150 automation steps per month** (every trigger, condition and
+  action counts as a step), so keep it to these three small rules — or do the transitions from Claude instead.
 - Claude (this session) can create tickets and move them through the workflow directly once the
   **Atlassian MCP** connector is connected in claude.ai → Connectors.
 
-## 5. Not enabled yet (deliberately)
+## 5. Free-plan limits worth knowing
+
+| Thing | Free tier | Notes |
+|---|---|---|
+| GitHub Actions | **2.000 dk/ay** (private repo), storage 500 MB | Public repo → unlimited. This CI is ~3–6 min/PR on Linux; macOS minutes cost ~10× |
+| Branch protection / rulesets | **Not available on private repos with GitHub Free** | Public repo → free. Otherwise GitHub Pro (~$4/user/mo) |
+| Auto-delete merged branches, squash-only, auto-merge | Free, any repo | Settings → General |
+| Claude PR review | GitHub Actions minutes + **Anthropic API usage is billed separately** | Not part of any Claude subscription |
+| Jira | 10 users, 2 GB storage, 1 site | |
+| Jira Automation | **150 steps/month for the whole site** | Every trigger/condition/action = 1 step |
+
+## 6. Not enabled yet (deliberately)
 
 - **iOS build/test in CI** — needs a macOS runner (~10× the minutes). Add a second job running
   `./gradlew iosSimulatorArm64Test` when the iOS surface grows.
