@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- App-wide strings. Default locale = Turkish (fallback for unsupported languages). Keys: localization.md §2 -->
+<resources>
+    <string name="common_brand_wordmark">PURRELLO</string>
+
+    <string name="common_action_save">Kaydet</string>
+    <string name="common_action_retry">Tekrar dene</string>
+    <string name="common_action_close">Kapat</string>
+    <string name="common_action_cancel">Vazgeç</string>
+    <string name="common_action_back">Geri</string>
+    <string name="common_action_contact_support">Destekle iletişime geç</string>
+
+    <string name="common_coming_soon_title">Yakında burada</string>
+    <string name="common_coming_soon_body">Bu bölüm üzerinde çalışıyoruz.</string>
+    <string name="common_unknown">Bilinmiyor</string>
+
+    <string name="a11y_open_profile">Profilini aç</string>
+    <string name="a11y_add">Ekle</string>
+
+    <string name="error_no_connection_title">Bağlantı yok</string>
+    <string name="error_no_connection_body">İnternet bağlantını kontrol edip tekrar dene.</string>
+    <string name="error_timeout_title">Yanıt gecikti</string>
+    <string name="error_timeout_body">Sunucu zamanında yanıt vermedi. Tekrar dener misin?</string>
+    <string name="error_generic_title">Bir sorun oluştu</string>
+    <string name="error_generic_body">İşlemi şu an tamamlayamadık. Birazdan tekrar dene.</string>
+    <string name="error_code_footnote">Hata kodu: %1$s</string>
+</resources>

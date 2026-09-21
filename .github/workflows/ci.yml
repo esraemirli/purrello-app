@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Static checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0          # git grep / git ls-files based checks need the work tree
+
+      - name: No committed secrets
+        run: scripts/check-secrets.sh
+
+      - name: No hardcoded user-visible strings
+        run: scripts/check-hardcoded-strings.sh
+
+      - name: Architecture guards
+        run: scripts/check-architecture.sh
+
+  build:
+    name: Build & test (Android + common)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Android debug
+        run: ./gradlew --no-daemon :androidApp:assembleDebug
+
+      # `hostTests` (root build.gradle.kts) = every JVM/Android unit-test task. Apple test tasks are not
+      # `Test` tasks, so they can't sneak in here; iOS needs a macOS runner (docs/github-setup.md).
+      # A module without tests contributes nothing — only a failing test fails this step.
+      - name: Unit tests
+        run: ./gradlew --no-daemon hostTests
+
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: '**/build/reports/tests/**'
+          retention-days: 7
+          if-no-files-found: ignore   # a task-level failure produces no reports; the log has the reason

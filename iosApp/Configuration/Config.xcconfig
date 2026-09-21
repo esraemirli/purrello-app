@@ -1,0 +1,20 @@
+TEAM_ID=SHY99Q5636
+
+PRODUCT_NAME=Purrello
+// TODO(release): confirm the final bundle id (must match GoogleService-Info.plist once Firebase/FCM is added).
+PRODUCT_BUNDLE_IDENTIFIER=com.purrello.app
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=0.1.0
+
+// App configuration per build configuration — the iOS counterpart of Android's BuildConfig fields.
+// Surfaced through Info.plist and read in AppDelegate; nothing is hardcoded in Swift.
+// Note: "//" starts a comment in xcconfig, so URLs use the $() escape trick.
+PURRELLO_ENVIRONMENT[config=Debug] = DEV
+PURRELLO_ENVIRONMENT[config=Release] = PROD
+
+PURRELLO_BASE_URL[config=Debug] = https:/$()/api.dev.purrello.app/
+PURRELLO_BASE_URL[config=Release] = https:/$()/api.purrello.app/
+
+PURRELLO_USE_FAKE_API[config=Debug] = YES
+PURRELLO_USE_FAKE_API[config=Release] = NO
