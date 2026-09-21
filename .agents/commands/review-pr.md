@@ -36,7 +36,12 @@ run by hand.
       - `safeApiCall` for network; no `try/catch` in ViewModels; `AppResult` / `AppError` end to end.
       - Data-driven UI matches a contract in `docs/api/`; flag DTO fields no contract documents.
       - New/changed ViewModels and mappers have `commonTest` coverage (success, error, retry, cancellation).
-   4. **Test gaps and missing previews.**
+   4. **Test gaps** — for every changed file, ask whether its methods carry logic (branching, mapping,
+   validation, error handling, cancellation, computed state). If they do and no test covers them, say so with
+   the specific case that is untested ("`onEvent(FilterSelected)` filtrelemeyi değiştiriyor, testi yok").
+   Do **not** ask for tests on pass-through code: an event that only sends an Effect, a repository method that
+   forwards a call, a data class, a DS composable. ViewModels, use cases, mappers and validators are where this
+   matters. Missing previews for new screens go here too.
 4. Output: a list of findings, each prefixed `🔴 blocker` / `🟠 should fix` / `🟡 nit`, with `file:line` and a short
    fix sketch. Then one line on what a human still has to check by hand (design fidelity, product behavior).
    If nothing is wrong, say so in one line.

@@ -13,6 +13,19 @@ Tests are written **once in `commonTest`** so they run on Android and iOS. Drop 
 | `safeApiCall` error mapping | Yes (in `core:network`) | `MockEngine` per status code |
 | Composables | Optional, for complex interaction | `runComposeUiTest` in `commonTest` |
 
+### When a test is required
+
+A file needs a test when its methods **contain logic**: branching, mapping/transformation, validation, error
+handling, cancellation, ordering, computed state. Code with no logic — a ViewModel event that only sends an
+Effect, a repository method that forwards a call, a data class, a DS composable — does not.
+
+Judged per method, not per file: a ViewModel with one branching event and five pass-through events needs a
+test for the branching one.
+
+**CI does not enforce this** (a coverage gate would only produce filler tests). It is a review
+responsibility: `/review-pr` flags changed files whose methods carry logic and have no matching test, and so
+does the human reviewer.
+
 Coverage target for new ViewModels and domain classes: **> 80 %**. Cover success, first-load failure (`Async.Failure(previous = null)`), refresh failure that keeps data (`Async.Failure(previous)`), dismiss → `dismissFailure()`, retry, empty, **load cancellation / race**, `SavedStateHandle` restoration, and no-op branches.
 
 ## 2. Naming & layout

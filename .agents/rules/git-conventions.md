@@ -86,7 +86,7 @@ build: scaffold KMP project with core/feature modules
 | `scripts/check-hardcoded-strings.sh` | user-visible string literal outside `composeResources` |
 | `scripts/check-architecture.sh` | feature → feature import, ViewModel that is not an `MviViewModel`, Material 3 / raw dp / hex in a feature, `try/catch` in feature code |
 | `:androidApp:assembleDebug` | build failure |
-| `allTests` | failing unit test |
+| `hostTests` | a failing unit test (a module with no tests is fine — missing tests are caught in review) |
 
 Run all three scripts locally before pushing — they are the same commands CI runs.
 

@@ -48,10 +48,11 @@ jobs:
       - name: Build Android debug
         run: ./gradlew --no-daemon :androidApp:assembleDebug
 
-      # Apple targets are disabled on a Linux host, so this runs the Android/common test suites.
-      # iOS tests need a macOS runner — see docs/github-setup.md before enabling them.
+      # `hostTests` (root build.gradle.kts) = every JVM/Android unit-test task. Apple test tasks are not
+      # `Test` tasks, so they can't sneak in here; iOS needs a macOS runner (docs/github-setup.md).
+      # A module without tests contributes nothing — only a failing test fails this step.
       - name: Unit tests
-        run: ./gradlew --no-daemon allTests
+        run: ./gradlew --no-daemon hostTests
 
       - name: Upload test reports
         if: failure()
@@ -60,3 +61,4 @@ jobs:
           name: test-reports
           path: '**/build/reports/tests/**'
           retention-days: 7
+          if-no-files-found: ignore   # a task-level failure produces no reports; the log has the reason
