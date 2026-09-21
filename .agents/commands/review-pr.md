@@ -3,6 +3,15 @@ Review the current branch / an open PR against this repo's rules, locally. Targe
 This replaces a paid CI review bot: it runs in your own Claude session, so it costs nothing beyond the
 subscription. Run it **before pushing** (or before asking for a human review).
 
+**Where to run it**
+- **Claude Code** (terminal, inside the repo): type `/review-pr` — it is registered through
+  `.claude/commands/review-pr.md`.
+- **This chat / Cowork session**: say "Purrello'da /review-pr çalıştır" — Claude reads this file and follows it.
+- **Cursor or another agent**: point it at `.agents/commands/review-pr.md`.
+
+It is a checklist for the agent, not a shell script — the shell commands in step 2 are the parts you can also
+run by hand.
+
 ## Steps
 
 1. Get the diff against `main`: `git fetch origin main && git diff origin/main...HEAD`. Review **only changed lines**.

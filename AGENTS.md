@@ -68,7 +68,7 @@ Review happens through the local `/review-pr` command (covered by the Claude sub
 | `/create-screen {Screen} {feature}` | Scaffold a screen (State, Action, Event, ViewModel, Route, Screen, entry, DI, strings) |
 | `/implement-screen-from-design {Screen} {link}` | Build a screen from a Figma node or design-artifact screen |
 | `/write-unit-tests {Class}` | Tests following `testing.md` |
-| `/review-pr [branch\|PR]` | Local review against the rules before pushing (free; replaces a paid PR bot) |
+| `/review-pr [branch\|PR]` | Local review against the rules before pushing (free; replaces a paid PR bot). Run it in Claude Code inside the repo, or ask for it in a Cowork session |
 
 ## Lessons
 
