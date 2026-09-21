@@ -65,8 +65,8 @@ build: scaffold KMP project with core/feature modules
   the reviewer to look at by hand.
 - Merge only with green CI and at least one human approval. Squash merge; the squash subject must satisfy the
   commit rule above. The branch is deleted on merge (repo setting).
-- The Claude review bot comments on every PR (`.github/workflows/claude-review.yml`). It does not block: fix,
-  reply, or explain why it is wrong — but a 🔴 finding must be resolved or explicitly dismissed before merge.
+- Run `/review-pr` before pushing and fix what it finds; a 🔴 finding is resolved or explicitly dismissed
+  before you ask for a human review. (No review bot runs in CI — it would bill API usage; see `AGENTS.md`.)
 
 ## CI checks (blocking)
 
@@ -81,6 +81,13 @@ build: scaffold KMP project with core/feature modules
 | `allTests` | failing unit test |
 
 Run all three scripts locally before pushing — they are the same commands CI runs.
+
+## Jira
+
+- Site `esraemirli97.atlassian.net`, project **Purrello** (`KAN`). Statuses: To Do → In Progress → In Review → Done.
+- Every client ticket is created with **Team = Mobile** and carries the work's labels (`kmp`, `ci`, feature name…).
+- Branch and PR title carry the ticket key. Move the ticket yourself: In Progress when you start, In Review when
+  the PR opens, Done when it merges.
 
 ## Authorship
 

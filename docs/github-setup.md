@@ -27,14 +27,15 @@ gh api -X PUT repos/esraemirli/purrello-app/branches/main/protection \
   --input .github/branch-protection.json    # see the ruleset UI for the exact payload you want
 ```
 
-## 3. Claude review bot
+## 3. Code review
 
-1. Install the **Claude GitHub App** on the repository (github.com/apps/claude → Install).
-2. Settings → Secrets and variables → Actions → New repository secret: **`ANTHROPIC_API_KEY`**.
-3. That's it — `.github/workflows/claude-review.yml` runs on every PR open/update and comments inline.
+Review is **local and free**: run `/review-pr` in a Claude session before pushing. It reads `AGENTS.md` +
+`.agents/rules/`, runs the same scripts CI runs, and reports findings as 🔴 / 🟠 / 🟡 — including plain-text
+secrets, which are always blockers.
 
-The review prompt is part of the workflow file, so tightening the review = editing that prompt in a PR.
-It reads `AGENTS.md` + `.agents/rules/` at review time, so rule changes take effect immediately.
+A GitHub-side bot (`anthropics/claude-code-action`) would review every PR automatically, but it bills
+**Anthropic API usage separately from any Claude subscription**, so it is deliberately not set up. Don't add
+it without an explicit cost decision (see "Anything that costs money" in `AGENTS.md`).
 
 ## 4. Jira
 
@@ -59,7 +60,7 @@ It reads `AGENTS.md` + `.agents/rules/` at review time, so rule changes take eff
 | GitHub Actions | **2.000 dk/ay** (private repo), storage 500 MB | Public repo → unlimited. This CI is ~3–6 min/PR on Linux; macOS minutes cost ~10× |
 | Branch protection / rulesets | **Not available on private repos with GitHub Free** | Public repo → free. Otherwise GitHub Pro (~$4/user/mo) |
 | Auto-delete merged branches, squash-only, auto-merge | Free, any repo | Settings → General |
-| Claude PR review | GitHub Actions minutes + **Anthropic API usage is billed separately** | Not part of any Claude subscription |
+| ~~Claude PR review bot~~ | Would bill **Anthropic API usage separately** | Not set up on purpose — use `/review-pr` locally instead |
 | Jira | 10 users, 2 GB storage, 1 site | |
 | Jira Automation | **150 steps/month for the whole site** | Every trigger/condition/action = 1 step |
 

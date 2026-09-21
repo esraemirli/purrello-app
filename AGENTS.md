@@ -34,6 +34,16 @@ This repository is **client only**: one **Kotlin Multiplatform** codebase for **
    are in `git-conventions.md`; one-time GitHub & Jira setup is in `docs/github-setup.md`.
 7. If a product or design decision is missing, **ask** — don't invent product behavior or backend fields silently.
 
+## Anything that costs money
+
+Never enable, install or configure something that bills money — a paid GitHub plan, a marketplace app, an
+API-billed bot (e.g. `anthropics/claude-code-action`), a paid CI runner, a paid Atlassian plan or app, a cloud
+service — **without asking first**. Explain what it costs, what it buys and what the free alternative is, then let
+the owner decide. Free tiers with a hard cap (GitHub Actions minutes, Jira automation steps) are fine, but say
+where the cap is when you set them up.
+
+Review happens through the local `/review-pr` command (covered by the Claude subscription), not a paid CI bot.
+
 ## Rule index (`.agents/rules/`)
 
 | File | Covers |
@@ -56,6 +66,7 @@ This repository is **client only**: one **Kotlin Multiplatform** codebase for **
 | `/create-screen {Screen} {feature}` | Scaffold a screen (State, Action, Event, ViewModel, Route, Screen, entry, DI, strings) |
 | `/implement-screen-from-design {Screen} {link}` | Build a screen from a Figma node or design-artifact screen |
 | `/write-unit-tests {Class}` | Tests following `testing.md` |
+| `/review-pr [branch\|PR]` | Local review against the rules before pushing (free; replaces a paid PR bot) |
 
 ## Lessons
 
