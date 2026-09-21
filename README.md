@@ -6,7 +6,19 @@ Start with **[AGENTS.md](AGENTS.md)** (rules, workflow) and **[ADR-0001](docs/ad
 
 ## Requirements
 
-- Android Studio (latest stable) with JDK 17+ (bundled JBR is fine)
+- **JDK 17+ (21 recommended) on your shell PATH.** Android Studio's bundled JBR covers the IDE, but Gradle
+  from the terminal — and Xcode's "Compile Kotlin Framework" phase — use the shell's JDK. With JDK 11 you get
+  `Gradle requires JVM 17 or later`. Fix once:
+
+  ```bash
+  brew install --cask temurin@21
+  echo 'export JAVA_HOME=$(/usr/libexec/java_home -v 21)' >> ~/.zshrc && source ~/.zshrc
+  java -version   # expect 21
+  ```
+
+  The Xcode build phase resolves a JDK on its own (`/usr/libexec/java_home`, falling back to Android Studio's
+  JBR), so iOS builds work even from a GUI launch that never reads `~/.zshrc`.
+- Android Studio (latest stable)
 - Xcode 16+ for iOS
 - No backend needed for development: debug builds use fake APIs that return the contract example JSON (`AppConfig.useFakeApi`).
 

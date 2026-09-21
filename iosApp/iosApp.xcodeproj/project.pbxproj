@@ -161,7 +161,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\n# Xcode does not read ~/.zshrc, and Gradle 9 requires JVM 17+. Resolve a suitable JDK here.\nif [ -z \"$JAVA_HOME\" ] || ! \"$JAVA_HOME/bin/java\" -version 2>&1 | grep -qE 'version \"(1[7-9]|2[0-9])'; then\n  JAVA_HOME=\"$(/usr/libexec/java_home -v 21 2>/dev/null || /usr/libexec/java_home -v 17 2>/dev/null || echo /Applications/Android\\ Studio.app/Contents/jbr/Contents/Home)\"\n  export JAVA_HOME\nfi\nif [ ! -x \"$JAVA_HOME/bin/java\" ]; then\n  echo \"error: no JDK 17+ found. Install one (brew install --cask temurin@21) or set JAVA_HOME.\"\n  exit 1\nfi\necho \"note: using JAVA_HOME=$JAVA_HOME\"\ncd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
