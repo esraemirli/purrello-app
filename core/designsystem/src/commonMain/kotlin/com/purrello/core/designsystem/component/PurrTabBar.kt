@@ -46,12 +46,12 @@ fun PurrTabBar(
     val colors = PurrelloTheme.colors
     Surface(color = colors.bgSurface, modifier = modifier.fillMaxWidth()) {
         Column {
-            HorizontalDivider(color = colors.border)
+            HorizontalDivider(color = colors.borderSubtle)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .padding(vertical = PurrelloTheme.spacing.sm),
+                    .padding(vertical = PurrelloTheme.spacing.space2),
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
                 items.forEachIndexed { index, item ->
@@ -74,13 +74,13 @@ fun PurrTabBar(
                             Icon(
                                 imageVector = item.icon,
                                 contentDescription = null,   // the label below is the accessible name
-                                tint = if (selected) colors.actionPrimary else colors.textSecondary,
+                                tint = if (selected) colors.textOnBrandSoft else colors.textSecondary,
                             )
                         }
                         Text(
                             text = item.label,
                             style = PurrelloTheme.typography.micro,
-                            color = if (selected) colors.actionPrimary else colors.textSecondary,
+                            color = if (selected) colors.textLink else colors.textSecondary,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
                         )

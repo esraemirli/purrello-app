@@ -38,7 +38,7 @@ fun PurrDialog(
         containerColor = PurrelloTheme.colors.bgSurface,
         title = { Text(text = title, style = PurrelloTheme.typography.title2, color = PurrelloTheme.colors.textPrimary) },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.sm)) {
+            Column(verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.space2)) {
                 Text(text = message, style = PurrelloTheme.typography.body, color = PurrelloTheme.colors.textSecondary)
                 if (footnote != null) {
                     Text(text = footnote, style = PurrelloTheme.typography.caption, color = PurrelloTheme.colors.textSecondary)
@@ -48,7 +48,7 @@ fun PurrDialog(
         confirmButton = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.sm),
+                verticalArrangement = Arrangement.spacedBy(PurrelloTheme.spacing.space2),
             ) {
                 listOfNotNull(primary, secondary, tertiary).forEach { action ->
                     PurrButton(

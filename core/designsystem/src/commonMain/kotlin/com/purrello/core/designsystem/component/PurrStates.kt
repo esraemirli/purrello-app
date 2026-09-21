@@ -62,7 +62,7 @@ private fun MessageState(
     val spacing = PurrelloTheme.spacing
     Column(
         modifier = modifier.fillMaxSize().padding(horizontal = spacing.screenEdge),
-        verticalArrangement = Arrangement.spacedBy(spacing.md, Alignment.CenterVertically),
+        verticalArrangement = Arrangement.spacedBy(spacing.space3, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(

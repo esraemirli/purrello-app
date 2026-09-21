@@ -52,7 +52,7 @@ fun LoginScreen(
         // TODO(ds): PurrBrandHero with tone-on-tone paw prints (#F5ABA7).
         Column(
             modifier = Modifier.weight(1f).fillMaxWidth().padding(horizontal = spacing.screenEdge),
-            verticalArrangement = Arrangement.spacedBy(spacing.md, Alignment.CenterVertically),
+            verticalArrangement = Arrangement.spacedBy(spacing.space3, Alignment.CenterVertically),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             PurrText(
